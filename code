@@ -10,7 +10,7 @@ rad2deg = (radians) ->
 
 # Wind Speed Calculator
 
-module.exports = (obj) ->
+module.exports = (obj) ->  #INPUT GPS VARIABLES HERE. 
   # SAILBOT acronym list
   # awd = Apparent Wind Direction (relative to true north)
   # awa = Apparent Wind Angle (relative to bow)
@@ -36,6 +36,11 @@ module.exports = (obj) ->
     awd = parseFloat awd
     if awd < heading then awd += 360
     awa = awd - heading
+
+  # Get awa and convert to radians
+  if isNaN(awa)
+    console.log "Please supply a valid value for Difference Between Heading and Apparent Wind Direction"
+    return
 
   # Get apparent wind speed.
   aws = parseFloat(aws)
